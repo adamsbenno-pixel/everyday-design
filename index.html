@@ -4,101 +4,208 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Everyday Design — Coming Soon</title>
+<meta name="description" content="Everyday Design — calm, functional spaces made for real life. Coming soon." />
 
 <style>
 :root{
   --bg:#f5f1ec;
   --ink:#1f2320;
   --muted:#6b726b;
-  --accent:#b8a48a;
   --line:rgba(31,35,32,.08);
   --radius:18px;
   --max:1200px;
 }
-
 *{box-sizing:border-box}
 body{
   margin:0;
-  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   color:var(--ink);
   background:var(--bg);
 }
-
-/* Layout */
 .wrap{max-width:var(--max);margin:auto;padding:30px 20px 80px;}
-
-.topbar{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:40px;
-}
-
-.logo img{
-  height:44px;
-  width:auto;
-}
-
-.nav a{
-  text-decoration:none;
-  margin-left:20px;
-  font-size:13px;
-  color:var(--muted);
-}
-
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:34px;gap:16px;}
+.logo img{height:44px;width:auto;display:block}
+.nav a{text-decoration:none;margin-left:18px;font-size:13px;color:var(--muted)}
 .nav a:hover{color:var(--ink)}
-
-/* Hero */
-.hero{
-  position:relative;
+.card{
+  background:rgba(255,255,255,.45);
+  border:1px solid var(--line);
   border-radius:var(--radius);
   overflow:hidden;
-  margin-bottom:50px;
 }
-
-.hero img{
+.hero{position:relative;margin-bottom:46px;}
+.hero img{width:100%;height:70vh;object-fit:cover;display:block;}
+.hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to bottom, rgba(0,0,0,.25), rgba(0,0,0,.35));
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  color:#fff;padding:20px;
+}
+.hero-overlay h1{font-size:48px;margin:0 0 10px;letter-spacing:-1px;line-height:1.05}
+.hero-overlay p{margin:0;font-size:18px;opacity:.92}
+.section{margin-bottom:54px;}
+.section h2{
+  font-size:13px;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--muted);margin:0 0 16px;
+}
+.section p{max-width:720px;color:var(--muted);line-height:1.65;margin:0;}
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:10px;
+  margin-top:18px;
+}
+.g{
+  overflow:hidden;
+  border-radius:14px;
+  border:1px solid rgba(31,35,32,.06);
+  background:rgba(255,255,255,.35);
+  grid-column:span 4;
+}
+.g img{
   width:100%;
-  height:70vh;
+  height:100%;
   object-fit:cover;
   display:block;
+  aspect-ratio:4/3;
+  transition:transform .4s ease;
 }
+.g:hover img{transform:scale(1.03)}
+/* gentle variation */
+.g:nth-child(6n+1){grid-column:span 6;}
+.g:nth-child(6n+4){grid-column:span 6;}
 
-.hero-overlay{
-  position:absolute;
-  inset:0;
-  background:linear-gradient(to bottom, rgba(0,0,0,.25), rgba(0,0,0,.35));
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
+.btn{
+  display:inline-block;
+  margin-top:14px;
+  padding:12px 18px;
+  border-radius:999px;
+  background:#1f2320;
   color:#fff;
-  padding:20px;
+  text-decoration:none;
+  font-size:14px;
+  border:1px solid rgba(31,35,32,.15);
 }
-
-.hero-overlay h1{
-  font-size:48px;
-  margin:0 0 10px;
-  letter-spacing:-1px;
-}
-
-.hero-overlay p{
-  margin:0;
-  font-size:18px;
-  opacity:.9;
-}
-
-/* Section */
-.section{
-  margin-bottom:60px;
-}
-
-.section h2{
-  font-size:13px;
-  letter-spacing:.15em;
-  text-transform:uppercase;
+.footer{
+  margin-top:54px;
+  font-size:12px;
   color:var(--muted);
-  margin-bottom:18px;
+  border-top:1px solid rgba(31,35,32,.10);
+  padding-top:18px;
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  flex-wrap:wrap;
 }
+@media(max-width:900px){
+  .hero img{height:56vh}
+  .hero-overlay h1{font-size:38px}
+  .gallery{grid-template-columns:repeat(6,1fr)}
+  .g{grid-column:span 3}
+  .g:nth-child(6n+1), .g:nth-child(6n+4){grid-column:span 6}
+}
+@media(max-width:600px){
+  .nav{display:none}
+  .gallery{grid-template-columns:repeat(4,1fr)}
+  .g{grid-column:span 4}
+  .g:nth-child(6n+1), .g:nth-child(6n+4){grid-column:span 4}
+}
+</style>
+</head>
 
-.section p{
-  max-width:70
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <div class="logo">
+      <img src="assets-.keep/EDD%20logo.png" alt="Everyday Design logo">
+    </div>
+    <div class="nav">
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#contact">Enquire</a>
+    </div>
+  </div>
+
+  <div class="hero card">
+    <img src="assets-.keep/main.jpg" alt="Everyday Design — featured project">
+    <div class="hero-overlay">
+      <div>
+        <h1>Calm, functional spaces<br>made for real life.</h1>
+        <p>Full website launching soon.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="about">
+    <h2>About</h2>
+    <p>
+      Everyday Design creates warm, considered interiors that feel elevated without sacrificing function.
+      We design homes for real life — practical layouts, durable finishes, and spaces that hold everyday moments beautifully.
+    </p>
+  </div>
+
+  <div class="section" id="work">
+    <h2>Recent work</h2>
+    <p>A preview of our projects. Full case studies coming soon.</p>
+
+    <div class="gallery">
+      <div class="g"><img src="assets-.keep/131e1ce9-8ec6-4a4a-b109-b80b25f276f5.jpg" alt=""></div>
+      <div class="g"><img src="assets-.keep/18899f4a-1ae4-4dd1-8b03-cb1647d5dd64.jpg" alt=""></div>
+      <div class="g"><img src="assets-.keep/1ca457af-fcbf-4d51-b8d9-3eb16a8885fa.jpg" alt=""></div>
+      <div class="g"><img src="assets-.keep/3070358c-ae8f-46e4-a494-5b83834c00a5.jpg" alt=""></div>
+      <div class="g"><img src="assets-.keep/348667ca-377a-4586-bb3b-f0ab9f89c315.jpg" alt=""></div>
+      <div class="g"><img src="assets-.keep/40df41f9-ab5c-46aa-8baf-d1bbfde1ef66.jpg" alt=""></div>
+      <div class="g"><img src="assets-.keep/491f464f-3ccd-4b7e-9f38-8a9aa3b45066.jpg" alt=""></div>
+      <div class="g"><img src="assets-.keep/5053cdee-f105-42c5-832e-292024db9d79.jpg" alt=""></div>
+      <div class="g"><img src="assets-.keep/51d7f931-9215-43df-b7f9-0caeab4ddb46.jpg" alt=""></div>
+      <div class="g"><img src="assets-.keep/56c49e6e-bc49-451d-a4f5-0fc0ab9db737.jpg" alt=""></div>
+      <div class="g"><img src="assets-.keep/68b3c947-bb9e-418e-83a4-f8687f22cca2.jpg" alt=""></div>
+      <div class="g"><img src="assets-.keep/803931cc-213d-476d-afba-3cdfe91f2ab0.jpg" alt=""></div>
+      <div class="g"><img src="assets-.keep/852dd8c8-8920-4772-bf62-be7b1ceadab8.jpg" alt=""></div>
+      <div class="g"><img src="assets-.keep/8893b716-66bb-4e9a-82d9-9280428d04c2.jpg" alt=""></div>
+      <div class="g"><img src="assets-.keep/93ea64ed-ff6e-4b3a-a8d7-a8cf315b86c4.jpg" alt=""></div>
+      <div class="g"><img src="assets-.keep/a1853303-a73b-4c8a-90ba-40e58a0e4b44.jpg" alt=""></div>
+      <div class="g"><img src="assets-.keep/a84ddc48-7594-4673-b0d7-5f6ab33a2363.jpg" alt=""></div>
+      <div class="g"><img src="assets-.keep/b0c9342c-4f8d-4f10-96ff-6ed67f94dfba.jpg" alt=""></div>
+      <div class="g"><img src="assets-.keep/b81b7710-2951-40de-89c8-712f984d6f14.jpg" alt=""></div>
+      <div class="g"><img src="assets-.keep/c9d07b2e-4e33-41a7-95d2-5147333933e8.jpg" alt=""></div>
+      <div class="g"><img src="assets-.keep/cb944dd2-1125-4c85-b1c5-1af272ee6dcb.jpg" alt=""></div>
+      <div class="g"><img src="assets-.keep/db532c7f-6398-482c-b39c-e6bafcca9206.jpg" alt=""></div>
+      <div class="g"><img src="assets-.keep/dc63128b-f586-4351-93cb-66b02a85e71c.jpg" alt=""></div>
+      <div class="g"><img src="assets-.keep/debb9da5-9c79-4ee7-82a8-7bfb0dd63292.jpg" alt=""></div>
+      <div class="g"><img src="assets-.keep/image2.jpg" alt=""></div>
+      <div class="g"><img src="assets-.keep/image8.jpg" alt=""></div>
+      <div class="g"><img src="assets-.keep/image9.jpg" alt=""></div>
+      <div class="g"><img src="assets-.keep/image10.jpg" alt=""></div>
+      <div class="g"><img src="assets-.keep/image11.jpg" alt=""></div>
+      <div class="g"><img src="assets-.keep/image12.jpg" alt=""></div>
+      <div class="g"><img src="assets-.keep/image13.jpg" alt=""></div>
+      <div class="g"><img src="assets-.keep/image14.jpg" alt=""></div>
+      <div class="g"><img src="assets-.keep/image15.jpg" alt=""></div>
+      <div class="g"><img src="assets-.keep/image16.jpg" alt=""></div>
+      <div class="g"><img src="assets-.keep/image17.jpg" alt=""></div>
+      <div class="g"><img src="assets-.keep/image19.jpg" alt=""></div>
+      <div class="g"><img src="assets-.keep/image23.jpg" alt=""></div>
+      <div class="g"><img src="assets-.keep/image24.jpg" alt=""></div>
+    </div>
+  </div>
+
+  <div class="section" id="contact">
+    <h2>Enquire</h2>
+    <p>Now taking enquiries for renovations, interiors and styling projects.</p>
+    <a class="btn" href="mailto:hello@everydaydesign.com.au">hello@everydaydesign.com.au</a>
+  </div>
+
+  <div class="footer">
+    <div>© <span id="y"></span> Everyday Design</div>
+    <div>Central Coast NSW • Remote consults available</div>
+  </div>
+
+</div>
+
+<script>
+  document.getElementById("y").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
