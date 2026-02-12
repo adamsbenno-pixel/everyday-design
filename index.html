@@ -1,357 +1,104 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Everyday Design — Coming Soon</title>
-  <meta name="description" content="Everyday Design — calm, functional interiors for real life. Coming soon." />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Everyday Design — Coming Soon</title>
 
-  <style>
-    :root{
-      --bg:#f6f2ed;          /* warm off-white */
-      --paper:#fbf8f4;       /* lighter panel */
-      --ink:#1f2320;         /* charcoal */
-      --muted:#5f665f;       /* soft grey-green */
-      --line:rgba(31,35,32,.10);
-      --accent:#b8a48a;      /* warm neutral */
-      --shadow: 0 14px 35px rgba(0,0,0,.06);
-      --radius: 18px;
-      --max: 1040px;
-    }
+<style>
+:root{
+  --bg:#f5f1ec;
+  --ink:#1f2320;
+  --muted:#6b726b;
+  --accent:#b8a48a;
+  --line:rgba(31,35,32,.08);
+  --radius:18px;
+  --max:1200px;
+}
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      color:var(--ink);
-      background:
-        radial-gradient(1200px 700px at 20% -10%, rgba(184,164,138,.18), transparent 60%),
-        radial-gradient(900px 600px at 110% 30%, rgba(95,102,95,.10), transparent 55%),
-        linear-gradient(var(--bg), var(--bg));
-    }
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  color:var(--ink);
+  background:var(--bg);
+}
 
-    a{color:inherit}
-    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 60px;}
-    .topbar{
-      display:flex; align-items:center; justify-content:space-between;
-      gap:16px; padding:10px 6px;
-    }
-    .brand{
-      display:flex; align-items:center; gap:12px; min-width: 220px;
-    }
-    .logo{
-      width:38px; height:38px; border-radius:12px;
-      background: linear-gradient(135deg, rgba(184,164,138,.55), rgba(31,35,32,.10));
-      border:1px solid var(--line);
-      box-shadow: 0 8px 18px rgba(0,0,0,.06);
-      display:grid; place-items:center;
-      font-weight:600; letter-spacing:.06em; color:rgba(31,35,32,.55);
-    }
-    .brandtext{line-height:1.1}
-    .brandname{font-weight:650; letter-spacing:.02em;}
-    .brandsub{font-size:12px; color:var(--muted); margin-top:2px}
+/* Layout */
+.wrap{max-width:var(--max);margin:auto;padding:30px 20px 80px;}
 
-    .nav{display:flex; gap:18px; flex-wrap:wrap; justify-content:flex-end}
-    .nav a{
-      text-decoration:none; font-size:13px; color:var(--muted);
-      padding:8px 10px; border-radius:999px;
-    }
-    .nav a:hover{background:rgba(31,35,32,.04); color:var(--ink)}
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:40px;
+}
 
-    .card{
-      background: rgba(251,248,244,.78);
-      border:1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(6px);
-    }
+.logo img{
+  height:44px;
+  width:auto;
+}
 
-    .hero{
-      margin-top:18px;
-      padding:34px 26px;
-      display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap:22px;
-      align-items:stretch;
-    }
+.nav a{
+  text-decoration:none;
+  margin-left:20px;
+  font-size:13px;
+  color:var(--muted);
+}
 
-    .kicker{
-      display:inline-flex; align-items:center; gap:10px;
-      font-size:12px; color:var(--muted);
-      letter-spacing:.12em; text-transform:uppercase;
-      background:rgba(31,35,32,.04);
-      padding:8px 12px; border-radius:999px;
-      border:1px solid rgba(31,35,32,.06);
-      width:fit-content;
-    }
-    .dot{width:7px; height:7px; border-radius:999px; background:var(--accent); display:inline-block}
+.nav a:hover{color:var(--ink)}
 
-    h1{
-      margin:14px 0 10px;
-      font-size:44px;
-      line-height:1.03;
-      letter-spacing:-.02em;
-    }
-    .lead{
-      margin:0 0 18px;
-      font-size:16px;
-      line-height:1.55;
-      color:var(--muted);
-      max-width: 56ch;
-    }
+/* Hero */
+.hero{
+  position:relative;
+  border-radius:var(--radius);
+  overflow:hidden;
+  margin-bottom:50px;
+}
 
-    .ctaRow{display:flex; gap:10px; flex-wrap:wrap; margin-top:8px}
-    .btn{
-      appearance:none; border:1px solid rgba(31,35,32,.14);
-      background: rgba(31,35,32,.92);
-      color: #fff;
-      padding: 11px 14px;
-      border-radius: 999px;
-      font-weight:600;
-      font-size:13px;
-      text-decoration:none;
-      display:inline-flex; align-items:center; gap:10px;
-    }
-    .btn:hover{background:rgba(31,35,32,1)}
-    .btn.secondary{
-      background: transparent;
-      color: var(--ink);
-      border:1px solid rgba(31,35,32,.14);
-    }
-    .btn.secondary:hover{background:rgba(31,35,32,.04)}
-    .arrow{opacity:.85}
+.hero img{
+  width:100%;
+  height:70vh;
+  object-fit:cover;
+  display:block;
+}
 
-    .side{
-      padding:18px;
-      display:grid;
-      gap:12px;
-      align-content:start;
-    }
-    .panel{
-      border-radius: 16px;
-      border:1px dashed rgba(31,35,32,.18);
-      background: rgba(255,255,255,.22);
-      padding:14px;
-    }
-    .panel h3{margin:0 0 6px; font-size:13px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted)}
-    .panel p{margin:0; font-size:13px; line-height:1.45; color:var(--muted)}
-    .mini{
-      display:flex; gap:10px; flex-wrap:wrap; margin-top:10px;
-      font-size:12px; color:var(--muted);
-    }
-    .pill{
-      padding:6px 10px; border-radius:999px;
-      border:1px solid rgba(31,35,32,.10);
-      background: rgba(31,35,32,.03);
-    }
+.hero-overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to bottom, rgba(0,0,0,.25), rgba(0,0,0,.35));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:#fff;
+  padding:20px;
+}
 
-    .grid{
-      margin-top:18px;
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:14px;
-    }
-    .section{
-      padding:18px;
-    }
-    .section h2{
-      margin:0 0 10px;
-      font-size:14px;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-      color:var(--muted);
-    }
-    .section p{margin:0; color:var(--muted); line-height:1.55; font-size:14px}
+.hero-overlay h1{
+  font-size:48px;
+  margin:0 0 10px;
+  letter-spacing:-1px;
+}
 
-    .project{
-      display:flex; gap:14px;
-      padding:14px;
-      border:1px solid rgba(31,35,32,.08);
-      border-radius:16px;
-      background: rgba(255,255,255,.22);
-    }
-    .thumb{
-      width:96px; height:78px;
-      border-radius:14px;
-      border:1px solid rgba(31,35,32,.10);
-      background: linear-gradient(135deg, rgba(184,164,138,.35), rgba(31,35,32,.06));
-      flex:0 0 auto;
-      display:grid; place-items:center;
-      color:rgba(31,35,32,.45);
-      font-weight:650;
-      letter-spacing:.06em;
-      font-size:12px;
-    }
-    .projMeta{min-width:0}
-    .projTitle{margin:0; font-weight:650; font-size:15px}
-    .projSub{margin:4px 0 0; color:var(--muted); font-size:13px; line-height:1.45}
+.hero-overlay p{
+  margin:0;
+  font-size:18px;
+  opacity:.9;
+}
 
-    .contact{
-      display:flex; gap:12px; flex-wrap:wrap; align-items:center;
-      margin-top:10px;
-    }
-    .contact a{color:var(--ink); text-decoration:none}
-    .contact a:hover{text-decoration:underline}
-    .footer{
-      margin-top:18px;
-      padding:16px 10px;
-      display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
-      color:var(--muted);
-      font-size:12px;
-      border-top:1px solid rgba(31,35,32,.08);
-    }
+/* Section */
+.section{
+  margin-bottom:60px;
+}
 
-    @media (max-width: 860px){
-      .hero{grid-template-columns: 1fr; padding:26px 18px}
-      h1{font-size:38px}
-      .grid{grid-template-columns: 1fr}
-      .brand{min-width:unset}
-    }
-  </style>
-</head>
+.section h2{
+  font-size:13px;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:18px;
+}
 
-<body>
-  <div class="wrap">
-    <div class="topbar">
-      <div class="brand">
-        <!-- Replace "ED" with your logo image later -->
-        <div class="logo" aria-label="Everyday Design logo placeholder">ED</div>
-        <div class="brandtext">
-          <div class="brandname">Everyday Design</div>
-          <div class="brandsub">Interiors • Renovations • Property</div>
-        </div>
-      </div>
-
-      <nav class="nav" aria-label="Primary navigation">
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#services">Services</a>
-        <a href="#enquire">Enquire</a>
-      </nav>
-    </div>
-
-    <section class="hero card">
-      <div>
-        <div class="kicker"><span class="dot"></span> Coming soon</div>
-        <h1>Calm, functional spaces<br/>made for real life.</h1>
-        <p class="lead">
-          We create spaces where everyday moments turn into lasting memories.
-          Our studio designs warm, lived-in interiors that feel elevated — without sacrificing function.
-        </p>
-
-        <div class="ctaRow">
-          <!-- Update these links later -->
-          <a class="btn" href="mailto:hello@everydaydesign.com.au">
-            Enquire <span class="arrow">↗</span>
-          </a>
-          <a class="btn secondary" href="#projects">View recent work</a>
-        </div>
-      </div>
-
-      <aside class="side">
-        <div class="panel">
-          <h3>Now taking enquiries</h3>
-          <p>
-            Based on the NSW Central Coast. Remote design consults available Australia-wide.
-          </p>
-          <div class="mini">
-            <span class="pill">Kitchen + living</span>
-            <span class="pill">Bathrooms</span>
-            <span class="pill">Full renos</span>
-            <span class="pill">Styling</span>
-          </div>
-        </div>
-
-        <div class="panel">
-          <h3>Website in progress</h3>
-          <p>
-            Our full studio site is on the way. In the meantime, contact us below and we’ll reply quickly.
-          </p>
-        </div>
-      </aside>
-    </section>
-
-    <section id="about" class="grid">
-      <div class="section card">
-        <h2>About</h2>
-        <p>
-          Everyday Design is an interior studio focused on creating beautiful, calm homes that work in everyday life —
-          practical layouts, durable finishes, and thoughtful details that make the space feel effortless.
-        </p>
-        <p style="margin-top:10px">
-          <strong style="color:var(--ink)">Founders photo:</strong> <span style="color:var(--muted)">Coming soon</span>
-        </p>
-      </div>
-
-      <div id="services" class="section card">
-        <h2>Services</h2>
-        <p>
-          • Interior design & selections<br/>
-          • Renovation planning & layouts<br/>
-          • Styling for sale / inspections<br/>
-          • Remote consults (Australia-wide)
-        </p>
-        <p style="margin-top:10px; color:var(--muted)">
-          <em>Full service list + pricing guide coming soon.</em>
-        </p>
-      </div>
-    </section>
-
-    <section id="projects" class="grid" style="margin-top:14px">
-      <div class="section card">
-        <h2>Recent projects</h2>
-
-        <div class="project" style="margin-top:10px">
-          <div class="thumb">IMG</div>
-          <div class="projMeta">
-            <p class="projTitle">Project 01 — Matcham</p>
-            <p class="projSub">
-              Large home renovation with a warm, neutral palette. Designed for calm everyday living with practical flow.
-              <span style="opacity:.7">(More photos coming soon.)</span>
-            </p>
-          </div>
-        </div>
-
-        <div class="project" style="margin-top:10px">
-          <div class="thumb">IMG</div>
-          <div class="projMeta">
-            <p class="projTitle">Project 02 — Wamberal</p>
-            <p class="projSub">
-              Interior updates and styling with soft textures and simple, functional choices.
-              <span style="opacity:.7">(More photos coming soon.)</span>
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div id="enquire" class="section card">
-        <h2>Enquire</h2>
-        <p>
-          For project enquiries, consults, or collaboration, reach out below.
-        </p>
-
-        <div class="contact">
-          <!-- Replace placeholders -->
-          <a class="btn" href="mailto:hello@everydaydesign.com.au">hello@everydaydesign.com.au</a>
-          <a class="btn secondary" href="tel:+61400000000">+61 4 00 000 000</a>
-        </div>
-
-        <p style="margin-top:12px; font-size:12px; color:var(--muted)">
-          Prefer Instagram? <a href="#" style="color:var(--ink)">Add your link here</a>.
-          Newsletter signup coming soon.
-        </p>
-      </div>
-    </section>
-
-    <div class="footer">
-      <div>© <span id="y"></span> Everyday Design</div>
-      <div>Central Coast NSW • Remote consults Australia-wide</div>
-    </div>
-  </div>
-
-  <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-  </script>
-</body>
-</html>
+.section p{
+  max-width:70
